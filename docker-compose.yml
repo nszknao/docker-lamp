@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  mariadb:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    volumes:
+      - ./db/data:/var/lib/mysql
+  php:
+    build: ./php
+    ports:
+      - '8888:80'
+    volumes:
+      - /Users/aa369165/Documents/others/nszknao:/var/www/html
+    depends_on:
+      - mariadb
+
